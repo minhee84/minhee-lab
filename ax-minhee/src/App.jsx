@@ -1,4 +1,4 @@
-/* 1. 필요한 라이브러리 및 도구 임포트 */
+/* 필요한 라이브러리 및 도구 임포트 */
 import { atom, useAtom } from 'jotai'; // 전역 상태 관리를 위한 Jotai 기본 훅
 import { atomWithStorage } from 'jotai/utils'; // 데이터를 로컬 스토리지에 자동 저장하는 유틸리티
 import styled from 'styled-components'; // CSS-in-JS 스타일링 도구
@@ -6,7 +6,7 @@ import { HashRouter as Router, Routes, Route, Link, useParams, useNavigate } fro
 // HashRouter: 배포 시 404 에러 방지를 위한 라우터
 // useParams: URL의 변수(:id)를 추출, useNavigate: 페이지 강제 이동
 
-/* 2. 전역 상태(Store) 설정 및 로컬 스토리지 연동 */
+/* 전역 상태(Store) 설정 및 로컬 스토리지 연동 */
 // 'topics_data'라는 키로 브라우저에 저장되며, 초기값이 없을 때 아래 배열을 사용함
 const topicsAtom = atomWithStorage('topics_data', [
   { id: 1, title: 'html', body: 'html is ...' },
@@ -14,7 +14,7 @@ const topicsAtom = atomWithStorage('topics_data', [
   { id: 3, title: 'javascript', body: 'javascript is ...' },
 ]);
 
-/* 3. Styled-components를 이용한 레이아웃 디자인 */
+/* Styled-components를 이용한 레이아웃 디자인 */
 const Layout = styled.div`
   padding: 40px;
   max-width: 600px;
@@ -28,7 +28,7 @@ const NavList = styled.ol`
   a { text-decoration: none; color: #007bff; font-weight: bold; }
 `;
 
-/* 4. [Read & Delete] 상세 보기 및 삭제 컴포넌트 */
+/* [Read & Delete] 상세 보기 및 삭제 컴포넌트 */
 function Read() {
   const [topics, setTopics] = useAtom(topicsAtom); // 전역 스토어에서 데이터 가져오기
   const { id } = useParams(); // URL 주소에서 id 값 추출 (예: /read/1 -> 1)
@@ -55,7 +55,7 @@ function Read() {
   );
 }
 
-/* 5. [Create] 새 글 작성 컴포넌트 */
+/* [Create] 새 글 작성 컴포넌트 */
 function Create() {
   const [topics, setTopics] = useAtom(topicsAtom);
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ function Create() {
   );
 }
 
-/* 6. 전체 화면 구조 및 라우팅 설정 */
+/* 전체 화면 구조 및 라우팅 설정 */
 function MainContents() {
   const [topics] = useAtom(topicsAtom); // 목록을 보여주기 위해 스토어 읽기 전용으로 호출
  

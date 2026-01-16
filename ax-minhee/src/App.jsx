@@ -116,7 +116,7 @@ function MainContents() {
   );
 }
 
-/* 7. 최상위 앱 컴포넌트 */
+/* 최상위 앱 컴포넌트 */
 export default function App() {
   return (
     // HashRouter로 감싸 전체 앱에 라우팅 기능 부여
